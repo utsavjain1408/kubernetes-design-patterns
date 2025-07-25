@@ -20,16 +20,3 @@
   echo "Visit http://127.0.0.1:8080 to use your application"
   kubectl --namespace {{ .Release.Namespace }} port-forward $POD_NAME 8080:$CONTAINER_PORT
 {{- end }}
-
-- Spinner: Waiting for hook completion (this is a visual aid only):
-
-  ```bash
-  start=$(date +%s)
-  while true; do
-    printf "\r⏳ Elapsed: $(( $(date +%s) - $start ))s"
-    sleep 1
-    # Replace this condition with actual hook check if desired
-    [[ $(( $(date +%s) - $start )) -gt 30 ]] && break
-  done
-  printf "\n✅ Post-install hooks should now be complete.\n"
-  ```
